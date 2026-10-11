@@ -1,0 +1,28 @@
+{
+  "style": "Cozy Pastel",
+  "colors": {
+    "bg": "#FFF8F0",
+    "surface": "#FFFFFF",
+    "surfaceAlt": "#FCEFE3",
+    "line": "#EADBCB",
+    "text": "#4A3B35",
+    "textMuted": "#9C8B80",
+    "accent": "#FF8FA3",
+    "accentDeep": "#E86F86",
+    "onAccent": "#FFFFFF",
+    "mint": "#8FD6B4",
+    "sky": "#8EC5FF",
+    "butter": "#FFD98E"
+  },
+  "fonts": {
+    "display": { "family": "rbxasset://fonts/families/FredokaOne.json", "weight": "Regular" },
+    "heading": { "family": "rbxasset://fonts/families/Nunito.json", "weight": "ExtraBold" },
+    "body":    { "family": "rbxasset://fonts/families/Nunito.json", "weight": "SemiBold" },
+    "label":   { "family": "rbxasset://fonts/families/Nunito.json", "weight": "Bold" },
+    "numeric": { "family": "rbxasset://fonts/families/Nunito.json", "weight": "ExtraBold" }
+  },
+  "textSizes": [13, 15, 18, 22, 30, 42],
+  "radius": [12, 18, 28],
+  "spacing": [4, 8, 12, 16, 24, 32],
+  "strokes": [1, 2]
+}

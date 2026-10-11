@@ -1,0 +1,26 @@
+{
+  "style": "Grim Horror",
+  "colors": {
+    "bg": "#08080A",
+    "surface": "#121114",
+    "surfaceRaised": "#1B191D",
+    "line": "#3A3438",
+    "text": "#D9D4CF",
+    "textMuted": "#7D7670",
+    "accent": "#B3212E",
+    "accentDim": "#6E1219",
+    "paper": "#E8DFC9",
+    "ink": "#2A2420"
+  },
+  "fonts": {
+    "display": { "family": "rbxasset://fonts/families/Oswald.json", "weight": "SemiBold" },
+    "heading": { "family": "rbxasset://fonts/families/Oswald.json", "weight": "Medium" },
+    "body":    { "family": "rbxasset://fonts/families/Oswald.json", "weight": "Regular" },
+    "label":   { "family": "rbxasset://fonts/families/Oswald.json", "weight": "Medium" },
+    "note":    { "family": "rbxasset://fonts/families/SpecialElite.json", "weight": "Regular" }
+  },
+  "textSizes": [13, 15, 18, 24, 34, 56],
+  "radius": [0, 2],
+  "spacing": [4, 8, 12, 16, 24, 32, 48],
+  "strokes": [1, 2]
+}

@@ -1,0 +1,36 @@
+{
+  "style": "Chunky Cartoon",
+  "colors": {
+    "outline": "#15132B",
+    "panel": "#2F8CFF",
+    "panelDark": "#1F63D9",
+    "panelDeep": "#17449E",
+    "panelInner": "#E8F1FF",
+    "headerRed": "#FF3445",
+    "text": "#FFFFFF",
+    "textDark": "#15132B",
+    "primary": "#5BE04B",
+    "primaryDepth": "#2E9E2A",
+    "secondary": "#FFC21F",
+    "secondaryDepth": "#D98E00",
+    "purple": "#B14CFF",
+    "purpleDepth": "#7522C9",
+    "pink": "#FF3F9A",
+    "orange": "#FF8A1F",
+    "danger": "#FF3B3B",
+    "dangerDepth": "#B81F2A",
+    "neutral": "#E6E9F2",
+    "neutralDepth": "#A9B0C2",
+    "currency": "#FFD84A"
+  },
+  "fonts": {
+    "display": { "family": "rbxasset://fonts/families/FredokaOne.json", "weight": "Regular" },
+    "heading": { "family": "rbxasset://fonts/families/FredokaOne.json", "weight": "Regular" },
+    "body":    { "family": "rbxasset://fonts/families/FredokaOne.json", "weight": "Regular" },
+    "small":   { "family": "rbxasset://fonts/families/BuilderSans.json", "weight": "ExtraBold" }
+  },
+  "textSizes": [14, 18, 22, 28, 36, 48],
+  "radius": [8, 12, 18],
+  "spacing": [2, 4, 6, 8, 12, 16, 24, 32],
+  "strokes": [2, 3, 4]
+}

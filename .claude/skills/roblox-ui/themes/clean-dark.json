@@ -1,0 +1,29 @@
+{
+  "style": "Clean Dark",
+  "colors": {
+    "bg": "#0B0F17",
+    "surface": "#131A26",
+    "surfaceRaised": "#1B2433",
+    "line": "#2A3446",
+    "text": "#EEF2F8",
+    "textMuted": "#8A96AB",
+    "accent": "#4C8DFF",
+    "accentDeep": "#2F6FE4",
+    "onAccent": "#FFFFFF",
+    "success": "#34D399",
+    "warning": "#FBBF24",
+    "danger": "#F87171",
+    "currency": "#FFD166"
+  },
+  "fonts": {
+    "display": { "family": "rbxasset://fonts/families/BuilderSans.json", "weight": "ExtraBold" },
+    "heading": { "family": "rbxasset://fonts/families/BuilderSans.json", "weight": "Bold" },
+    "body":    { "family": "rbxasset://fonts/families/BuilderSans.json", "weight": "Medium" },
+    "label":   { "family": "rbxasset://fonts/families/BuilderSans.json", "weight": "SemiBold" },
+    "numeric": { "family": "rbxasset://fonts/families/GothamSSm.json", "weight": "Bold" }
+  },
+  "textSizes": [12, 14, 16, 20, 28, 40],
+  "radius": [6, 10, 14, 20],
+  "spacing": [4, 8, 12, 16, 20, 24, 32, 48],
+  "strokes": [1, 2]
+}

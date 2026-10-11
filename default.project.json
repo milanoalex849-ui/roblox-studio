@@ -1,0 +1,9 @@
+{
+  "name": "roblox-studio",
+  "tree": {
+    "$className": "DataModel",
+    "StarterGui": {
+      "$path": "src/StarterGui"
+    }
+  }
+}

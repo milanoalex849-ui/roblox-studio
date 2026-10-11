@@ -1,0 +1,27 @@
+{
+  "style": "Sci-Fi HUD",
+  "colors": {
+    "bg": "#05080D",
+    "surface": "#0A1220",
+    "surfaceRaised": "#101C30",
+    "line": "#59E3FF",
+    "text": "#DDF6FF",
+    "textMuted": "#6C8AA3",
+    "accent": "#00E0FF",
+    "onAccent": "#03121A",
+    "success": "#3CFFA0",
+    "warning": "#FFB020",
+    "danger": "#FF3B5C"
+  },
+  "fonts": {
+    "display": { "family": "rbxasset://fonts/families/Michroma.json", "weight": "Regular" },
+    "heading": { "family": "rbxasset://fonts/families/TitilliumWeb.json", "weight": "Bold" },
+    "body":    { "family": "rbxasset://fonts/families/TitilliumWeb.json", "weight": "SemiBold" },
+    "label":   { "family": "rbxasset://fonts/families/TitilliumWeb.json", "weight": "Bold" },
+    "numeric": { "family": "rbxasset://fonts/families/RobotoMono.json", "weight": "Medium" }
+  },
+  "textSizes": [11, 13, 16, 20, 28, 40],
+  "radius": [0, 2, 4],
+  "spacing": [4, 8, 12, 16, 24, 32],
+  "strokes": [1, 2]
+}

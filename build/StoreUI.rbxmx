@@ -1,0 +1,3238 @@
+<roblox version="4">
+  <Item class="ScreenGui" referent="0">
+    <Properties>
+      <string name="Name">StoreUI</string>
+      <int name="DisplayOrder">5</int>
+      <token name="ScreenInsets">1</token>
+      <bool name="ResetOnSpawn">false</bool>
+      <token name="ZIndexBehavior">1</token>
+    </Properties>
+    <Item class="Frame" referent="1">
+      <Properties>
+        <string name="Name">StoreWindow</string>
+        <Vector2 name="AnchorPoint">
+          <X>0.5</X>
+          <Y>0.5</Y>
+        </Vector2>
+        <float name="BackgroundTransparency">1</float>
+        <UDim2 name="Position">
+          <XS>0.5</XS>
+          <XO>0</XO>
+          <YS>0.5</YS>
+          <YO>0</YO>
+        </UDim2>
+        <UDim2 name="Size">
+          <XS>0.9</XS>
+          <XO>0</XO>
+          <YS>0.8</YS>
+          <YO>0</YO>
+        </UDim2>
+      </Properties>
+      <Item class="UIAspectRatioConstraint" referent="2">
+        <Properties>
+          <string name="Name">Shape</string>
+          <float name="AspectRatio">1.3</float>
+        </Properties>
+      </Item>
+      <Item class="UISizeConstraint" referent="3">
+        <Properties>
+          <string name="Name">SizeLimit</string>
+          <Vector2 name="MaxSize">
+            <X>640</X>
+            <Y>492</Y>
+          </Vector2>
+        </Properties>
+      </Item>
+      <Item class="Frame" referent="4">
+        <Properties>
+          <string name="Name">Body</string>
+          <Color3 name="BackgroundColor3">
+            <R>0.184</R>
+            <G>0.549</G>
+            <B>1</B>
+          </Color3>
+          <int name="BorderSizePixel">0</int>
+          <UDim2 name="Size">
+            <XS>1</XS>
+            <XO>0</XO>
+            <YS>1</YS>
+            <YO>0</YO>
+          </UDim2>
+        </Properties>
+        <Item class="UICorner" referent="5">
+          <Properties>
+            <string name="Name">Corner</string>
+            <UDim name="BottomLeftRadius">
+              <S>0</S>
+              <O>18</O>
+            </UDim>
+            <UDim name="BottomRightRadius">
+              <S>0</S>
+              <O>18</O>
+            </UDim>
+            <UDim name="TopLeftRadius">
+              <S>0</S>
+              <O>18</O>
+            </UDim>
+            <UDim name="TopRightRadius">
+              <S>0</S>
+              <O>18</O>
+            </UDim>
+          </Properties>
+        </Item>
+        <Item class="UIStroke" referent="6">
+          <Properties>
+            <string name="Name">Outline</string>
+            <token name="ApplyStrokeMode">1</token>
+            <Color3 name="Color">
+              <R>0.082</R>
+              <G>0.075</G>
+              <B>0.169</B>
+            </Color3>
+            <token name="LineJoinMode">0</token>
+            <float name="Thickness">4</float>
+          </Properties>
+        </Item>
+        <Item class="UIGradient" referent="7">
+          <Properties>
+            <string name="Name">Shine</string>
+            <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.82 0.82 0.82 0 </ColorSequence>
+            <float name="Rotation">90</float>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="8">
+          <Properties>
+            <string name="Name">Header</string>
+            <Color3 name="BackgroundColor3">
+              <R>0.122</R>
+              <G>0.388</G>
+              <B>0.851</B>
+            </Color3>
+            <int name="BorderSizePixel">0</int>
+            <UDim2 name="Size">
+              <XS>1</XS>
+              <XO>0</XO>
+              <YS>0.15</YS>
+              <YO>0</YO>
+            </UDim2>
+          </Properties>
+          <Item class="UICorner" referent="9">
+            <Properties>
+              <string name="Name">Corner</string>
+              <UDim name="BottomLeftRadius">
+                <S>0</S>
+                <O>18</O>
+              </UDim>
+              <UDim name="BottomRightRadius">
+                <S>0</S>
+                <O>18</O>
+              </UDim>
+              <UDim name="TopLeftRadius">
+                <S>0</S>
+                <O>18</O>
+              </UDim>
+              <UDim name="TopRightRadius">
+                <S>0</S>
+                <O>18</O>
+              </UDim>
+            </Properties>
+          </Item>
+          <Item class="Frame" referent="10">
+            <Properties>
+              <string name="Name">SquareBottom</string>
+              <Color3 name="BackgroundColor3">
+                <R>0.122</R>
+                <G>0.388</G>
+                <B>0.851</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <UDim2 name="Position">
+                <XS>0</XS>
+                <XO>0</XO>
+                <YS>0.5</YS>
+                <YO>0</YO>
+              </UDim2>
+              <UDim2 name="Size">
+                <XS>1</XS>
+                <XO>0</XO>
+                <YS>0.5</YS>
+                <YO>0</YO>
+              </UDim2>
+            </Properties>
+          </Item>
+          <Item class="ImageLabel" referent="11">
+            <Properties>
+              <string name="Name">IconStore</string>
+              <Vector2 name="AnchorPoint">
+                <X>0</X>
+                <Y>0.5</Y>
+              </Vector2>
+              <float name="BackgroundTransparency">1</float>
+              <Content name="ImageContent">
+                <null>
+                </null>
+              </Content>
+              <UDim2 name="Position">
+                <XS>0.03</XS>
+                <XO>0</XO>
+                <YS>0.5</YS>
+                <YO>0</YO>
+              </UDim2>
+              <UDim2 name="Size">
+                <XS>1</XS>
+                <XO>0</XO>
+                <YS>0.7</YS>
+                <YO>0</YO>
+              </UDim2>
+              <int name="ZIndex">2</int>
+            </Properties>
+            <Item class="UIAspectRatioConstraint" referent="12">
+              <Properties>
+                <string name="Name">Square</string>
+                <float name="AspectRatio">1</float>
+                <token name="AspectType">1</token>
+                <token name="DominantAxis">1</token>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="TextLabel" referent="13">
+            <Properties>
+              <string name="Name">Title</string>
+              <Vector2 name="AnchorPoint">
+                <X>0</X>
+                <Y>0.5</Y>
+              </Vector2>
+              <float name="BackgroundTransparency">1</float>
+              <Font name="FontFace">
+                <Family>
+                  <url>rbxasset://fonts/families/FredokaOne.json</url>
+                </Family>
+                <Weight>400</Weight>
+                <Style>Normal</Style>
+              </Font>
+              <UDim2 name="Position">
+                <XS>0.12</XS>
+                <XO>0</XO>
+                <YS>0.5</YS>
+                <YO>0</YO>
+              </UDim2>
+              <UDim2 name="Size">
+                <XS>0.3</XS>
+                <XO>0</XO>
+                <YS>0.68</YS>
+                <YO>0</YO>
+              </UDim2>
+              <string name="Text">Store</string>
+              <Color3 name="TextColor3">
+                <R>1</R>
+                <G>1</G>
+                <B>1</B>
+              </Color3>
+              <bool name="TextScaled">true</bool>
+              <token name="TextXAlignment">0</token>
+              <int name="ZIndex">2</int>
+            </Properties>
+            <Item class="UITextSizeConstraint" referent="14">
+              <Properties>
+                <string name="Name">TextLimit</string>
+                <int name="MaxTextSize">40</int>
+                <int name="MinTextSize">10</int>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="15">
+              <Properties>
+                <string name="Name">TextOutline</string>
+                <token name="ApplyStrokeMode">0</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">3</float>
+              </Properties>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="16">
+            <Properties>
+              <string name="Name">CoinsPill</string>
+              <Vector2 name="AnchorPoint">
+                <X>1</X>
+                <Y>0.5</Y>
+              </Vector2>
+              <Color3 name="BackgroundColor3">
+                <R>0.09</R>
+                <G>0.267</G>
+                <B>0.62</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <UDim2 name="Position">
+                <XS>0.86</XS>
+                <XO>0</XO>
+                <YS>0.5</YS>
+                <YO>0</YO>
+              </UDim2>
+              <UDim2 name="Size">
+                <XS>0.32</XS>
+                <XO>0</XO>
+                <YS>0.6</YS>
+                <YO>0</YO>
+              </UDim2>
+              <int name="ZIndex">2</int>
+            </Properties>
+            <Item class="UICorner" referent="17">
+              <Properties>
+                <string name="Name">Corner</string>
+                <UDim name="BottomLeftRadius">
+                  <S>0</S>
+                  <O>8</O>
+                </UDim>
+                <UDim name="BottomRightRadius">
+                  <S>0</S>
+                  <O>8</O>
+                </UDim>
+                <UDim name="TopLeftRadius">
+                  <S>0</S>
+                  <O>8</O>
+                </UDim>
+                <UDim name="TopRightRadius">
+                  <S>0</S>
+                  <O>8</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="18">
+              <Properties>
+                <string name="Name">Outline</string>
+                <token name="ApplyStrokeMode">1</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">2</float>
+              </Properties>
+            </Item>
+            <Item class="UIPadding" referent="19">
+              <Properties>
+                <string name="Name">Padding</string>
+                <UDim name="PaddingBottom">
+                  <S>0</S>
+                  <O>4</O>
+                </UDim>
+                <UDim name="PaddingLeft">
+                  <S>0</S>
+                  <O>6</O>
+                </UDim>
+                <UDim name="PaddingRight">
+                  <S>0</S>
+                  <O>8</O>
+                </UDim>
+                <UDim name="PaddingTop">
+                  <S>0</S>
+                  <O>4</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="Frame" referent="20">
+              <Properties>
+                <string name="Name">Balance</string>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIListLayout" referent="21">
+                <Properties>
+                  <string name="Name">Row</string>
+                  <token name="FillDirection">0</token>
+                  <UDim name="Padding">
+                    <S>0</S>
+                    <O>4</O>
+                  </UDim>
+                  <token name="SortOrder">2</token>
+                  <token name="VerticalAlignment">0</token>
+                </Properties>
+              </Item>
+              <Item class="ImageLabel" referent="22">
+                <Properties>
+                  <string name="Name">IconCoin</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Content name="ImageContent">
+                    <null>
+                    </null>
+                  </Content>
+                  <int name="LayoutOrder">1</int>
+                  <token name="ScaleType">3</token>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                </Properties>
+                <Item class="UIAspectRatioConstraint" referent="23">
+                  <Properties>
+                    <string name="Name">Square</string>
+                    <float name="AspectRatio">1</float>
+                    <token name="AspectType">1</token>
+                    <token name="DominantAxis">1</token>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextLabel" referent="24">
+                <Properties>
+                  <string name="Name">Amount</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <int name="LayoutOrder">2</int>
+                  <UDim2 name="Size">
+                    <XS>0.75</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                  <string name="Text">633,637</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>0.847</G>
+                    <B>0.29</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <token name="TextXAlignment">0</token>
+                </Properties>
+                <Item class="UITextSizeConstraint" referent="25">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">24</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="26">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="27">
+          <Properties>
+            <string name="Name">HeaderLine</string>
+            <Color3 name="BackgroundColor3">
+              <R>0.082</R>
+              <G>0.075</G>
+              <B>0.169</B>
+            </Color3>
+            <int name="BorderSizePixel">0</int>
+            <UDim2 name="Position">
+              <XS>0</XS>
+              <XO>0</XO>
+              <YS>0.15</YS>
+              <YO>0</YO>
+            </UDim2>
+            <UDim2 name="Size">
+              <XS>1</XS>
+              <XO>0</XO>
+              <YS>0</YS>
+              <YO>4</YO>
+            </UDim2>
+          </Properties>
+        </Item>
+        <Item class="Frame" referent="28">
+          <Properties>
+            <string name="Name">Items</string>
+            <float name="BackgroundTransparency">1</float>
+            <UDim2 name="Position">
+              <XS>0.04</XS>
+              <XO>0</XO>
+              <YS>0.2</YS>
+              <YO>0</YO>
+            </UDim2>
+            <UDim2 name="Size">
+              <XS>0.92</XS>
+              <XO>0</XO>
+              <YS>0.61</YS>
+              <YO>0</YO>
+            </UDim2>
+          </Properties>
+          <Item class="UIGridLayout" referent="29">
+            <Properties>
+              <string name="Name">Grid</string>
+              <UDim2 name="CellPadding">
+                <XS>0.03</XS>
+                <XO>0</XO>
+                <YS>0.06</YS>
+                <YO>0</YO>
+              </UDim2>
+              <UDim2 name="CellSize">
+                <XS>0.485</XS>
+                <XO>0</XO>
+                <YS>0.47</YS>
+                <YO>0</YO>
+              </UDim2>
+              <token name="SortOrder">2</token>
+            </Properties>
+          </Item>
+          <Item class="Frame" referent="30">
+            <Properties>
+              <string name="Name">AppleCard</string>
+              <Color3 name="BackgroundColor3">
+                <R>1</R>
+                <G>0.247</G>
+                <B>0.604</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">1</int>
+            </Properties>
+            <Item class="UICorner" referent="31">
+              <Properties>
+                <string name="Name">Corner</string>
+                <UDim name="BottomLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="BottomRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="32">
+              <Properties>
+                <string name="Name">Outline</string>
+                <token name="ApplyStrokeMode">1</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">3</float>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="33">
+              <Properties>
+                <string name="Name">Shine</string>
+                <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.72 0.72 0.72 0 </ColorSequence>
+                <float name="Rotation">90</float>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="34">
+              <Properties>
+                <string name="Name">ItemName</string>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.07</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.58</XS>
+                  <XO>0</XO>
+                  <YS>0.24</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">Apple</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="35">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">30</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="36">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">3</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="37">
+              <Properties>
+                <string name="Name">Price</string>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.35</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.5</XS>
+                  <XO>0</XO>
+                  <YS>0.17</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIListLayout" referent="38">
+                <Properties>
+                  <string name="Name">Row</string>
+                  <token name="FillDirection">0</token>
+                  <UDim name="Padding">
+                    <S>0</S>
+                    <O>4</O>
+                  </UDim>
+                  <token name="SortOrder">2</token>
+                  <token name="VerticalAlignment">0</token>
+                </Properties>
+              </Item>
+              <Item class="ImageLabel" referent="39">
+                <Properties>
+                  <string name="Name">IconCoin</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Content name="ImageContent">
+                    <null>
+                    </null>
+                  </Content>
+                  <int name="LayoutOrder">1</int>
+                  <token name="ScaleType">3</token>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                </Properties>
+                <Item class="UIAspectRatioConstraint" referent="40">
+                  <Properties>
+                    <string name="Name">Square</string>
+                    <float name="AspectRatio">1</float>
+                    <token name="AspectType">1</token>
+                    <token name="DominantAxis">1</token>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextLabel" referent="41">
+                <Properties>
+                  <string name="Name">Amount</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <int name="LayoutOrder">2</int>
+                  <UDim2 name="Size">
+                    <XS>0.75</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                  <string name="Text">3,412</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>0.847</G>
+                    <B>0.29</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <token name="TextXAlignment">0</token>
+                </Properties>
+                <Item class="UITextSizeConstraint" referent="42">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">22</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="43">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+            <Item class="TextLabel" referent="44">
+              <Properties>
+                <string name="Name">Perk</string>
+                <Vector2 name="AnchorPoint">
+                  <X>0</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.92</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.42</XS>
+                  <XO>0</XO>
+                  <YS>0.16</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">+500 HP</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="45">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">20</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="46">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="ImageLabel" referent="47">
+              <Properties>
+                <string name="Name">Thumb</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>0</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Content name="ImageContent">
+                  <null>
+                  </null>
+                </Content>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.06</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <token name="ScaleType">3</token>
+                <UDim2 name="Size">
+                  <XS>0.36</XS>
+                  <XO>0</XO>
+                  <YS>0.56</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIAspectRatioConstraint" referent="48">
+                <Properties>
+                  <string name="Name">Square</string>
+                  <float name="AspectRatio">1</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="49">
+              <Properties>
+                <string name="Name">BuyButton</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.93</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.4</XS>
+                  <XO>0</XO>
+                  <YS>0.3</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="Frame" referent="50">
+                <Properties>
+                  <string name="Name">Depth</string>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.18</R>
+                    <G>0.62</G>
+                    <B>0.165</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <UDim2 name="Position">
+                    <XS>0</XS>
+                    <XO>0</XO>
+                    <YS>0</YS>
+                    <YO>4</YO>
+                  </UDim2>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <int name="ZIndex">1</int>
+                </Properties>
+                <Item class="UICorner" referent="51">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="52">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextButton" referent="53">
+                <Properties>
+                  <string name="Name">Face</string>
+                  <bool name="AutoButtonColor">false</bool>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.357</R>
+                    <G>0.878</G>
+                    <B>0.294</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <string name="Text">Buy</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>1</G>
+                    <B>1</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <int name="ZIndex">2</int>
+                </Properties>
+                <Item class="UICorner" referent="54">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="55">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIGradient" referent="56">
+                  <Properties>
+                    <string name="Name">Shine</string>
+                    <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                    <float name="Rotation">90</float>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="57">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIPadding" referent="58">
+                  <Properties>
+                    <string name="Name">Padding</string>
+                    <UDim name="PaddingBottom">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                    <UDim name="PaddingLeft">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingRight">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingTop">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UITextSizeConstraint" referent="59">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">24</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="60">
+            <Properties>
+              <string name="Name">BananaCard</string>
+              <Color3 name="BackgroundColor3">
+                <R>1</R>
+                <G>0.761</G>
+                <B>0.122</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">2</int>
+            </Properties>
+            <Item class="UICorner" referent="61">
+              <Properties>
+                <string name="Name">Corner</string>
+                <UDim name="BottomLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="BottomRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="62">
+              <Properties>
+                <string name="Name">Outline</string>
+                <token name="ApplyStrokeMode">1</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">3</float>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="63">
+              <Properties>
+                <string name="Name">Shine</string>
+                <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.72 0.72 0.72 0 </ColorSequence>
+                <float name="Rotation">90</float>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="64">
+              <Properties>
+                <string name="Name">ItemName</string>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.07</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.58</XS>
+                  <XO>0</XO>
+                  <YS>0.24</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">Bananas</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="65">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">30</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="66">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">3</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="67">
+              <Properties>
+                <string name="Name">Price</string>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.35</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.5</XS>
+                  <XO>0</XO>
+                  <YS>0.17</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIListLayout" referent="68">
+                <Properties>
+                  <string name="Name">Row</string>
+                  <token name="FillDirection">0</token>
+                  <UDim name="Padding">
+                    <S>0</S>
+                    <O>4</O>
+                  </UDim>
+                  <token name="SortOrder">2</token>
+                  <token name="VerticalAlignment">0</token>
+                </Properties>
+              </Item>
+              <Item class="ImageLabel" referent="69">
+                <Properties>
+                  <string name="Name">IconCoin</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Content name="ImageContent">
+                    <null>
+                    </null>
+                  </Content>
+                  <int name="LayoutOrder">1</int>
+                  <token name="ScaleType">3</token>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                </Properties>
+                <Item class="UIAspectRatioConstraint" referent="70">
+                  <Properties>
+                    <string name="Name">Square</string>
+                    <float name="AspectRatio">1</float>
+                    <token name="AspectType">1</token>
+                    <token name="DominantAxis">1</token>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextLabel" referent="71">
+                <Properties>
+                  <string name="Name">Amount</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <int name="LayoutOrder">2</int>
+                  <UDim2 name="Size">
+                    <XS>0.75</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                  <string name="Text">3,412</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>0.847</G>
+                    <B>0.29</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <token name="TextXAlignment">0</token>
+                </Properties>
+                <Item class="UITextSizeConstraint" referent="72">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">22</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="73">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+            <Item class="TextLabel" referent="74">
+              <Properties>
+                <string name="Name">Perk</string>
+                <Vector2 name="AnchorPoint">
+                  <X>0</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.92</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.42</XS>
+                  <XO>0</XO>
+                  <YS>0.16</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">+500 HP</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="75">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">20</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="76">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="ImageLabel" referent="77">
+              <Properties>
+                <string name="Name">Thumb</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>0</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Content name="ImageContent">
+                  <null>
+                  </null>
+                </Content>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.06</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <token name="ScaleType">3</token>
+                <UDim2 name="Size">
+                  <XS>0.36</XS>
+                  <XO>0</XO>
+                  <YS>0.56</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIAspectRatioConstraint" referent="78">
+                <Properties>
+                  <string name="Name">Square</string>
+                  <float name="AspectRatio">1</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="79">
+              <Properties>
+                <string name="Name">BuyButton</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.93</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.4</XS>
+                  <XO>0</XO>
+                  <YS>0.3</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="Frame" referent="80">
+                <Properties>
+                  <string name="Name">Depth</string>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.18</R>
+                    <G>0.62</G>
+                    <B>0.165</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <UDim2 name="Position">
+                    <XS>0</XS>
+                    <XO>0</XO>
+                    <YS>0</YS>
+                    <YO>4</YO>
+                  </UDim2>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <int name="ZIndex">1</int>
+                </Properties>
+                <Item class="UICorner" referent="81">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="82">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextButton" referent="83">
+                <Properties>
+                  <string name="Name">Face</string>
+                  <bool name="AutoButtonColor">false</bool>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.357</R>
+                    <G>0.878</G>
+                    <B>0.294</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <string name="Text">Buy</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>1</G>
+                    <B>1</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <int name="ZIndex">2</int>
+                </Properties>
+                <Item class="UICorner" referent="84">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="85">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIGradient" referent="86">
+                  <Properties>
+                    <string name="Name">Shine</string>
+                    <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                    <float name="Rotation">90</float>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="87">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIPadding" referent="88">
+                  <Properties>
+                    <string name="Name">Padding</string>
+                    <UDim name="PaddingBottom">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                    <UDim name="PaddingLeft">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingRight">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingTop">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UITextSizeConstraint" referent="89">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">24</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="90">
+            <Properties>
+              <string name="Name">CookieCard</string>
+              <Color3 name="BackgroundColor3">
+                <R>1</R>
+                <G>0.541</G>
+                <B>0.122</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">3</int>
+            </Properties>
+            <Item class="UICorner" referent="91">
+              <Properties>
+                <string name="Name">Corner</string>
+                <UDim name="BottomLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="BottomRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="92">
+              <Properties>
+                <string name="Name">Outline</string>
+                <token name="ApplyStrokeMode">1</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">3</float>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="93">
+              <Properties>
+                <string name="Name">Shine</string>
+                <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.72 0.72 0.72 0 </ColorSequence>
+                <float name="Rotation">90</float>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="94">
+              <Properties>
+                <string name="Name">ItemName</string>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.07</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.58</XS>
+                  <XO>0</XO>
+                  <YS>0.24</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">Cookie</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="95">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">30</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="96">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">3</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="97">
+              <Properties>
+                <string name="Name">Price</string>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.35</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.5</XS>
+                  <XO>0</XO>
+                  <YS>0.17</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIListLayout" referent="98">
+                <Properties>
+                  <string name="Name">Row</string>
+                  <token name="FillDirection">0</token>
+                  <UDim name="Padding">
+                    <S>0</S>
+                    <O>4</O>
+                  </UDim>
+                  <token name="SortOrder">2</token>
+                  <token name="VerticalAlignment">0</token>
+                </Properties>
+              </Item>
+              <Item class="ImageLabel" referent="99">
+                <Properties>
+                  <string name="Name">IconCoin</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Content name="ImageContent">
+                    <null>
+                    </null>
+                  </Content>
+                  <int name="LayoutOrder">1</int>
+                  <token name="ScaleType">3</token>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                </Properties>
+                <Item class="UIAspectRatioConstraint" referent="100">
+                  <Properties>
+                    <string name="Name">Square</string>
+                    <float name="AspectRatio">1</float>
+                    <token name="AspectType">1</token>
+                    <token name="DominantAxis">1</token>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextLabel" referent="101">
+                <Properties>
+                  <string name="Name">Amount</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <int name="LayoutOrder">2</int>
+                  <UDim2 name="Size">
+                    <XS>0.75</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                  <string name="Text">3,412</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>0.847</G>
+                    <B>0.29</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <token name="TextXAlignment">0</token>
+                </Properties>
+                <Item class="UITextSizeConstraint" referent="102">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">22</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="103">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+            <Item class="TextLabel" referent="104">
+              <Properties>
+                <string name="Name">Perk</string>
+                <Vector2 name="AnchorPoint">
+                  <X>0</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.92</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.42</XS>
+                  <XO>0</XO>
+                  <YS>0.16</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">+500 HP</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="105">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">20</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="106">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="ImageLabel" referent="107">
+              <Properties>
+                <string name="Name">Thumb</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>0</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Content name="ImageContent">
+                  <null>
+                  </null>
+                </Content>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.06</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <token name="ScaleType">3</token>
+                <UDim2 name="Size">
+                  <XS>0.36</XS>
+                  <XO>0</XO>
+                  <YS>0.56</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIAspectRatioConstraint" referent="108">
+                <Properties>
+                  <string name="Name">Square</string>
+                  <float name="AspectRatio">1</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="109">
+              <Properties>
+                <string name="Name">BuyButton</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.93</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.4</XS>
+                  <XO>0</XO>
+                  <YS>0.3</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="Frame" referent="110">
+                <Properties>
+                  <string name="Name">Depth</string>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.18</R>
+                    <G>0.62</G>
+                    <B>0.165</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <UDim2 name="Position">
+                    <XS>0</XS>
+                    <XO>0</XO>
+                    <YS>0</YS>
+                    <YO>4</YO>
+                  </UDim2>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <int name="ZIndex">1</int>
+                </Properties>
+                <Item class="UICorner" referent="111">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="112">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextButton" referent="113">
+                <Properties>
+                  <string name="Name">Face</string>
+                  <bool name="AutoButtonColor">false</bool>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.357</R>
+                    <G>0.878</G>
+                    <B>0.294</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <string name="Text">Buy</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>1</G>
+                    <B>1</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <int name="ZIndex">2</int>
+                </Properties>
+                <Item class="UICorner" referent="114">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="115">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIGradient" referent="116">
+                  <Properties>
+                    <string name="Name">Shine</string>
+                    <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                    <float name="Rotation">90</float>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="117">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIPadding" referent="118">
+                  <Properties>
+                    <string name="Name">Padding</string>
+                    <UDim name="PaddingBottom">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                    <UDim name="PaddingLeft">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingRight">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingTop">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UITextSizeConstraint" referent="119">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">24</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="120">
+            <Properties>
+              <string name="Name">BlueberryCard</string>
+              <Color3 name="BackgroundColor3">
+                <R>0.694</R>
+                <G>0.298</G>
+                <B>1</B>
+              </Color3>
+              <int name="BorderSizePixel">0</int>
+              <int name="LayoutOrder">4</int>
+            </Properties>
+            <Item class="UICorner" referent="121">
+              <Properties>
+                <string name="Name">Corner</string>
+                <UDim name="BottomLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="BottomRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopLeftRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+                <UDim name="TopRightRadius">
+                  <S>0</S>
+                  <O>12</O>
+                </UDim>
+              </Properties>
+            </Item>
+            <Item class="UIStroke" referent="122">
+              <Properties>
+                <string name="Name">Outline</string>
+                <token name="ApplyStrokeMode">1</token>
+                <Color3 name="Color">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <token name="LineJoinMode">0</token>
+                <float name="Thickness">3</float>
+              </Properties>
+            </Item>
+            <Item class="UIGradient" referent="123">
+              <Properties>
+                <string name="Name">Shine</string>
+                <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.72 0.72 0.72 0 </ColorSequence>
+                <float name="Rotation">90</float>
+              </Properties>
+            </Item>
+            <Item class="TextLabel" referent="124">
+              <Properties>
+                <string name="Name">ItemName</string>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.07</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.58</XS>
+                  <XO>0</XO>
+                  <YS>0.24</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">Blueberries</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="125">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">30</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="126">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">3</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="127">
+              <Properties>
+                <string name="Name">Price</string>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.35</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.5</XS>
+                  <XO>0</XO>
+                  <YS>0.17</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIListLayout" referent="128">
+                <Properties>
+                  <string name="Name">Row</string>
+                  <token name="FillDirection">0</token>
+                  <UDim name="Padding">
+                    <S>0</S>
+                    <O>4</O>
+                  </UDim>
+                  <token name="SortOrder">2</token>
+                  <token name="VerticalAlignment">0</token>
+                </Properties>
+              </Item>
+              <Item class="ImageLabel" referent="129">
+                <Properties>
+                  <string name="Name">IconCoin</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Content name="ImageContent">
+                    <null>
+                    </null>
+                  </Content>
+                  <int name="LayoutOrder">1</int>
+                  <token name="ScaleType">3</token>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                </Properties>
+                <Item class="UIAspectRatioConstraint" referent="130">
+                  <Properties>
+                    <string name="Name">Square</string>
+                    <float name="AspectRatio">1</float>
+                    <token name="AspectType">1</token>
+                    <token name="DominantAxis">1</token>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextLabel" referent="131">
+                <Properties>
+                  <string name="Name">Amount</string>
+                  <float name="BackgroundTransparency">1</float>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <int name="LayoutOrder">2</int>
+                  <UDim2 name="Size">
+                    <XS>0.75</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>0</YO>
+                  </UDim2>
+                  <string name="Text">3,412</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>0.847</G>
+                    <B>0.29</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <token name="TextXAlignment">0</token>
+                </Properties>
+                <Item class="UITextSizeConstraint" referent="132">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">22</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="133">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+            <Item class="TextLabel" referent="134">
+              <Properties>
+                <string name="Name">Perk</string>
+                <Vector2 name="AnchorPoint">
+                  <X>0</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Position">
+                  <XS>0.06</XS>
+                  <XO>0</XO>
+                  <YS>0.92</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.42</XS>
+                  <XO>0</XO>
+                  <YS>0.16</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <string name="Text">+500 HP</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <token name="TextXAlignment">0</token>
+              </Properties>
+              <Item class="UITextSizeConstraint" referent="135">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">20</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="136">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="ImageLabel" referent="137">
+              <Properties>
+                <string name="Name">Thumb</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>0</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <Content name="ImageContent">
+                  <null>
+                  </null>
+                </Content>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.06</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <token name="ScaleType">3</token>
+                <UDim2 name="Size">
+                  <XS>0.36</XS>
+                  <XO>0</XO>
+                  <YS>0.56</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="UIAspectRatioConstraint" referent="138">
+                <Properties>
+                  <string name="Name">Square</string>
+                  <float name="AspectRatio">1</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="Frame" referent="139">
+              <Properties>
+                <string name="Name">BuyButton</string>
+                <Vector2 name="AnchorPoint">
+                  <X>1</X>
+                  <Y>1</Y>
+                </Vector2>
+                <float name="BackgroundTransparency">1</float>
+                <UDim2 name="Position">
+                  <XS>0.95</XS>
+                  <XO>0</XO>
+                  <YS>0.93</YS>
+                  <YO>0</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>0.4</XS>
+                  <XO>0</XO>
+                  <YS>0.3</YS>
+                  <YO>0</YO>
+                </UDim2>
+              </Properties>
+              <Item class="Frame" referent="140">
+                <Properties>
+                  <string name="Name">Depth</string>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.18</R>
+                    <G>0.62</G>
+                    <B>0.165</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <UDim2 name="Position">
+                    <XS>0</XS>
+                    <XO>0</XO>
+                    <YS>0</YS>
+                    <YO>4</YO>
+                  </UDim2>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <int name="ZIndex">1</int>
+                </Properties>
+                <Item class="UICorner" referent="141">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="142">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+              </Item>
+              <Item class="TextButton" referent="143">
+                <Properties>
+                  <string name="Name">Face</string>
+                  <bool name="AutoButtonColor">false</bool>
+                  <Color3 name="BackgroundColor3">
+                    <R>0.357</R>
+                    <G>0.878</G>
+                    <B>0.294</B>
+                  </Color3>
+                  <int name="BorderSizePixel">0</int>
+                  <Font name="FontFace">
+                    <Family>
+                      <url>rbxasset://fonts/families/FredokaOne.json</url>
+                    </Family>
+                    <Weight>400</Weight>
+                    <Style>Normal</Style>
+                  </Font>
+                  <UDim2 name="Size">
+                    <XS>1</XS>
+                    <XO>0</XO>
+                    <YS>1</YS>
+                    <YO>-4</YO>
+                  </UDim2>
+                  <string name="Text">Buy</string>
+                  <Color3 name="TextColor3">
+                    <R>1</R>
+                    <G>1</G>
+                    <B>1</B>
+                  </Color3>
+                  <bool name="TextScaled">true</bool>
+                  <int name="ZIndex">2</int>
+                </Properties>
+                <Item class="UICorner" referent="144">
+                  <Properties>
+                    <string name="Name">Corner</string>
+                    <UDim name="BottomLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="BottomRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopLeftRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="TopRightRadius">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="145">
+                  <Properties>
+                    <string name="Name">Outline</string>
+                    <token name="ApplyStrokeMode">1</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIGradient" referent="146">
+                  <Properties>
+                    <string name="Name">Shine</string>
+                    <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                    <float name="Rotation">90</float>
+                  </Properties>
+                </Item>
+                <Item class="UIStroke" referent="147">
+                  <Properties>
+                    <string name="Name">TextOutline</string>
+                    <token name="ApplyStrokeMode">0</token>
+                    <Color3 name="Color">
+                      <R>0.082</R>
+                      <G>0.075</G>
+                      <B>0.169</B>
+                    </Color3>
+                    <token name="LineJoinMode">0</token>
+                    <float name="Thickness">2</float>
+                  </Properties>
+                </Item>
+                <Item class="UIPadding" referent="148">
+                  <Properties>
+                    <string name="Name">Padding</string>
+                    <UDim name="PaddingBottom">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                    <UDim name="PaddingLeft">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingRight">
+                      <S>0</S>
+                      <O>8</O>
+                    </UDim>
+                    <UDim name="PaddingTop">
+                      <S>0.18</S>
+                      <O>0</O>
+                    </UDim>
+                  </Properties>
+                </Item>
+                <Item class="UITextSizeConstraint" referent="149">
+                  <Properties>
+                    <string name="Name">TextLimit</string>
+                    <int name="MaxTextSize">24</int>
+                    <int name="MinTextSize">10</int>
+                  </Properties>
+                </Item>
+              </Item>
+            </Item>
+          </Item>
+        </Item>
+        <Item class="Frame" referent="150">
+          <Properties>
+            <string name="Name">Tabs</string>
+            <float name="BackgroundTransparency">1</float>
+            <UDim2 name="Position">
+              <XS>0.04</XS>
+              <XO>0</XO>
+              <YS>0.845</YS>
+              <YO>0</YO>
+            </UDim2>
+            <UDim2 name="Size">
+              <XS>0.92</XS>
+              <XO>0</XO>
+              <YS>0.11</YS>
+              <YO>0</YO>
+            </UDim2>
+          </Properties>
+          <Item class="UIListLayout" referent="151">
+            <Properties>
+              <string name="Name">Row</string>
+              <token name="FillDirection">0</token>
+              <UDim name="Padding">
+                <S>0.02</S>
+                <O>0</O>
+              </UDim>
+              <token name="SortOrder">2</token>
+              <token name="VerticalAlignment">0</token>
+            </Properties>
+          </Item>
+          <Item class="Frame" referent="152">
+            <Properties>
+              <string name="Name">FoodTab</string>
+              <float name="BackgroundTransparency">1</float>
+              <int name="LayoutOrder">1</int>
+              <UDim2 name="Size">
+                <XS>0.32</XS>
+                <XO>0</XO>
+                <YS>1</YS>
+                <YO>0</YO>
+              </UDim2>
+            </Properties>
+            <Item class="Frame" referent="153">
+              <Properties>
+                <string name="Name">Depth</string>
+                <Color3 name="BackgroundColor3">
+                  <R>0.18</R>
+                  <G>0.62</G>
+                  <B>0.165</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <UDim2 name="Position">
+                  <XS>0</XS>
+                  <XO>0</XO>
+                  <YS>0</YS>
+                  <YO>4</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <int name="ZIndex">1</int>
+              </Properties>
+              <Item class="UICorner" referent="154">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="155">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="TextButton" referent="156">
+              <Properties>
+                <string name="Name">Face</string>
+                <bool name="AutoButtonColor">false</bool>
+                <Color3 name="BackgroundColor3">
+                  <R>0.357</R>
+                  <G>0.878</G>
+                  <B>0.294</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <string name="Text">Food</string>
+                <Color3 name="TextColor3">
+                  <R>1</R>
+                  <G>1</G>
+                  <B>1</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <int name="ZIndex">2</int>
+              </Properties>
+              <Item class="UICorner" referent="157">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="158">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+              <Item class="UIGradient" referent="159">
+                <Properties>
+                  <string name="Name">Shine</string>
+                  <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                  <float name="Rotation">90</float>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="160">
+                <Properties>
+                  <string name="Name">TextOutline</string>
+                  <token name="ApplyStrokeMode">0</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+              <Item class="UIPadding" referent="161">
+                <Properties>
+                  <string name="Name">Padding</string>
+                  <UDim name="PaddingBottom">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                  <UDim name="PaddingLeft">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingRight">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingTop">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UITextSizeConstraint" referent="162">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">22</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="163">
+            <Properties>
+              <string name="Name">SwordsTab</string>
+              <float name="BackgroundTransparency">1</float>
+              <int name="LayoutOrder">2</int>
+              <UDim2 name="Size">
+                <XS>0.32</XS>
+                <XO>0</XO>
+                <YS>1</YS>
+                <YO>0</YO>
+              </UDim2>
+            </Properties>
+            <Item class="Frame" referent="164">
+              <Properties>
+                <string name="Name">Depth</string>
+                <Color3 name="BackgroundColor3">
+                  <R>0.663</R>
+                  <G>0.69</G>
+                  <B>0.761</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <UDim2 name="Position">
+                  <XS>0</XS>
+                  <XO>0</XO>
+                  <YS>0</YS>
+                  <YO>4</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <int name="ZIndex">1</int>
+              </Properties>
+              <Item class="UICorner" referent="165">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="166">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="TextButton" referent="167">
+              <Properties>
+                <string name="Name">Face</string>
+                <bool name="AutoButtonColor">false</bool>
+                <Color3 name="BackgroundColor3">
+                  <R>0.902</R>
+                  <G>0.914</G>
+                  <B>0.949</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <string name="Text">Swords</string>
+                <Color3 name="TextColor3">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <int name="ZIndex">2</int>
+              </Properties>
+              <Item class="UICorner" referent="168">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="169">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+              <Item class="UIGradient" referent="170">
+                <Properties>
+                  <string name="Name">Shine</string>
+                  <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                  <float name="Rotation">90</float>
+                </Properties>
+              </Item>
+              <Item class="UIPadding" referent="171">
+                <Properties>
+                  <string name="Name">Padding</string>
+                  <UDim name="PaddingBottom">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                  <UDim name="PaddingLeft">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingRight">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingTop">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UITextSizeConstraint" referent="172">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">22</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+            </Item>
+          </Item>
+          <Item class="Frame" referent="173">
+            <Properties>
+              <string name="Name">BoostsTab</string>
+              <float name="BackgroundTransparency">1</float>
+              <int name="LayoutOrder">3</int>
+              <UDim2 name="Size">
+                <XS>0.32</XS>
+                <XO>0</XO>
+                <YS>1</YS>
+                <YO>0</YO>
+              </UDim2>
+            </Properties>
+            <Item class="Frame" referent="174">
+              <Properties>
+                <string name="Name">Depth</string>
+                <Color3 name="BackgroundColor3">
+                  <R>0.663</R>
+                  <G>0.69</G>
+                  <B>0.761</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <UDim2 name="Position">
+                  <XS>0</XS>
+                  <XO>0</XO>
+                  <YS>0</YS>
+                  <YO>4</YO>
+                </UDim2>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <int name="ZIndex">1</int>
+              </Properties>
+              <Item class="UICorner" referent="175">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="176">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+            </Item>
+            <Item class="TextButton" referent="177">
+              <Properties>
+                <string name="Name">Face</string>
+                <bool name="AutoButtonColor">false</bool>
+                <Color3 name="BackgroundColor3">
+                  <R>0.902</R>
+                  <G>0.914</G>
+                  <B>0.949</B>
+                </Color3>
+                <int name="BorderSizePixel">0</int>
+                <Font name="FontFace">
+                  <Family>
+                    <url>rbxasset://fonts/families/FredokaOne.json</url>
+                  </Family>
+                  <Weight>400</Weight>
+                  <Style>Normal</Style>
+                </Font>
+                <UDim2 name="Size">
+                  <XS>1</XS>
+                  <XO>0</XO>
+                  <YS>1</YS>
+                  <YO>-4</YO>
+                </UDim2>
+                <string name="Text">Boosts</string>
+                <Color3 name="TextColor3">
+                  <R>0.082</R>
+                  <G>0.075</G>
+                  <B>0.169</B>
+                </Color3>
+                <bool name="TextScaled">true</bool>
+                <int name="ZIndex">2</int>
+              </Properties>
+              <Item class="UICorner" referent="178">
+                <Properties>
+                  <string name="Name">Corner</string>
+                  <UDim name="BottomLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="BottomRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopLeftRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="TopRightRadius">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UIStroke" referent="179">
+                <Properties>
+                  <string name="Name">Outline</string>
+                  <token name="ApplyStrokeMode">1</token>
+                  <Color3 name="Color">
+                    <R>0.082</R>
+                    <G>0.075</G>
+                    <B>0.169</B>
+                  </Color3>
+                  <token name="LineJoinMode">0</token>
+                  <float name="Thickness">2</float>
+                </Properties>
+              </Item>
+              <Item class="UIGradient" referent="180">
+                <Properties>
+                  <string name="Name">Shine</string>
+                  <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+                  <float name="Rotation">90</float>
+                </Properties>
+              </Item>
+              <Item class="UIPadding" referent="181">
+                <Properties>
+                  <string name="Name">Padding</string>
+                  <UDim name="PaddingBottom">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                  <UDim name="PaddingLeft">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingRight">
+                    <S>0</S>
+                    <O>8</O>
+                  </UDim>
+                  <UDim name="PaddingTop">
+                    <S>0.18</S>
+                    <O>0</O>
+                  </UDim>
+                </Properties>
+              </Item>
+              <Item class="UITextSizeConstraint" referent="182">
+                <Properties>
+                  <string name="Name">TextLimit</string>
+                  <int name="MaxTextSize">22</int>
+                  <int name="MinTextSize">10</int>
+                </Properties>
+              </Item>
+            </Item>
+          </Item>
+        </Item>
+      </Item>
+      <Item class="Frame" referent="183">
+        <Properties>
+          <string name="Name">CloseButton</string>
+          <Vector2 name="AnchorPoint">
+            <X>0.5</X>
+            <Y>0.5</Y>
+          </Vector2>
+          <float name="BackgroundTransparency">1</float>
+          <UDim2 name="Position">
+            <XS>1</XS>
+            <XO>-10</XO>
+            <YS>0</YS>
+            <YO>10</YO>
+          </UDim2>
+          <UDim2 name="Size">
+            <XS>0.085</XS>
+            <XO>0</XO>
+            <YS>0.11</YS>
+            <YO>0</YO>
+          </UDim2>
+          <int name="ZIndex">3</int>
+        </Properties>
+        <Item class="Frame" referent="184">
+          <Properties>
+            <string name="Name">Depth</string>
+            <Color3 name="BackgroundColor3">
+              <R>0.722</R>
+              <G>0.122</G>
+              <B>0.165</B>
+            </Color3>
+            <int name="BorderSizePixel">0</int>
+            <UDim2 name="Position">
+              <XS>0</XS>
+              <XO>0</XO>
+              <YS>0</YS>
+              <YO>4</YO>
+            </UDim2>
+            <UDim2 name="Size">
+              <XS>1</XS>
+              <XO>0</XO>
+              <YS>1</YS>
+              <YO>-4</YO>
+            </UDim2>
+            <int name="ZIndex">1</int>
+          </Properties>
+          <Item class="UICorner" referent="185">
+            <Properties>
+              <string name="Name">Corner</string>
+              <UDim name="BottomLeftRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="BottomRightRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="TopLeftRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="TopRightRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="186">
+            <Properties>
+              <string name="Name">Outline</string>
+              <token name="ApplyStrokeMode">1</token>
+              <Color3 name="Color">
+                <R>0.082</R>
+                <G>0.075</G>
+                <B>0.169</B>
+              </Color3>
+              <token name="LineJoinMode">0</token>
+              <float name="Thickness">3</float>
+            </Properties>
+          </Item>
+        </Item>
+        <Item class="TextButton" referent="187">
+          <Properties>
+            <string name="Name">Face</string>
+            <bool name="AutoButtonColor">false</bool>
+            <Color3 name="BackgroundColor3">
+              <R>1</R>
+              <G>0.231</G>
+              <B>0.231</B>
+            </Color3>
+            <int name="BorderSizePixel">0</int>
+            <Font name="FontFace">
+              <Family>
+                <url>rbxasset://fonts/families/FredokaOne.json</url>
+              </Family>
+              <Weight>400</Weight>
+              <Style>Normal</Style>
+            </Font>
+            <UDim2 name="Size">
+              <XS>1</XS>
+              <XO>0</XO>
+              <YS>1</YS>
+              <YO>-4</YO>
+            </UDim2>
+            <string name="Text">X</string>
+            <Color3 name="TextColor3">
+              <R>1</R>
+              <G>1</G>
+              <B>1</B>
+            </Color3>
+            <bool name="TextScaled">true</bool>
+            <int name="ZIndex">2</int>
+          </Properties>
+          <Item class="UICorner" referent="188">
+            <Properties>
+              <string name="Name">Corner</string>
+              <UDim name="BottomLeftRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="BottomRightRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="TopLeftRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="TopRightRadius">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="189">
+            <Properties>
+              <string name="Name">Outline</string>
+              <token name="ApplyStrokeMode">1</token>
+              <Color3 name="Color">
+                <R>0.082</R>
+                <G>0.075</G>
+                <B>0.169</B>
+              </Color3>
+              <token name="LineJoinMode">0</token>
+              <float name="Thickness">3</float>
+            </Properties>
+          </Item>
+          <Item class="UIGradient" referent="190">
+            <Properties>
+              <string name="Name">Shine</string>
+              <ColorSequence name="Color">0 1 1 1 0 0.5 0.94 0.94 0.94 0 1 0.78 0.78 0.78 0 </ColorSequence>
+              <float name="Rotation">90</float>
+            </Properties>
+          </Item>
+          <Item class="UIStroke" referent="191">
+            <Properties>
+              <string name="Name">TextOutline</string>
+              <token name="ApplyStrokeMode">0</token>
+              <Color3 name="Color">
+                <R>0.082</R>
+                <G>0.075</G>
+                <B>0.169</B>
+              </Color3>
+              <token name="LineJoinMode">0</token>
+              <float name="Thickness">2</float>
+            </Properties>
+          </Item>
+          <Item class="UIPadding" referent="192">
+            <Properties>
+              <string name="Name">Padding</string>
+              <UDim name="PaddingBottom">
+                <S>0.18</S>
+                <O>0</O>
+              </UDim>
+              <UDim name="PaddingLeft">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="PaddingRight">
+                <S>0</S>
+                <O>8</O>
+              </UDim>
+              <UDim name="PaddingTop">
+                <S>0.18</S>
+                <O>0</O>
+              </UDim>
+            </Properties>
+          </Item>
+          <Item class="UITextSizeConstraint" referent="193">
+            <Properties>
+              <string name="Name">TextLimit</string>
+              <int name="MaxTextSize">34</int>
+              <int name="MinTextSize">10</int>
+            </Properties>
+          </Item>
+        </Item>
+      </Item>
+    </Item>
+  </Item>
+</roblox>
