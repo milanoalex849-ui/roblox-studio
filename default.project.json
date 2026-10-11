@@ -4,6 +4,11 @@
     "$className": "DataModel",
     "StarterGui": {
       "$path": "src/StarterGui"
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/StarterPlayerScripts"
+      }
     }
   }
 }

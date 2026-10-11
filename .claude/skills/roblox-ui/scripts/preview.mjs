@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Renders Roblox UI .model.json files to an HTML preview, plus PNG screenshots when Playwright is available.
 // Usage: node preview.mjs <file.model.json>... [--show Name]... [--show-all] [--out .ui-preview]
-//        [--sizes phone,tablet,desktop] [--no-png] [--no-chrome] [--labels]
+//        [--sizes phone,tablet,desktop] [--no-png] [--no-chrome] [--labels] [--video]
+// Images with an `Asset` attribute render the matching assets/ui/<Asset>.png texture.
+// The HTML plays the UIAnimator animations; --video records a short .webm of them (needs Playwright).
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -40,7 +42,7 @@ const FONT_MAP = {
 };
 
 const args = process.argv.slice(2);
-const opts = { show: [], showAll: false, out: ".ui-preview", sizes: ["phone", "tablet", "desktop"], png: true, chrome: true, labels: false };
+const opts = { show: [], showAll: false, out: ".ui-preview", sizes: ["phone", "tablet", "desktop"], png: true, chrome: true, labels: false, video: false, animate: true };
 const files = [];
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
@@ -51,6 +53,7 @@ for (let i = 0; i < args.length; i++) {
   else if (a === "--no-png") opts.png = false;
   else if (a === "--no-chrome") opts.chrome = false;
   else if (a === "--labels") opts.labels = true;
+  else if (a === "--video") opts.video = true;
   else files.push(a);
 }
 if (files.length === 0) {
@@ -59,6 +62,29 @@ if (files.length === 0) {
 }
 
 const runtime = fs.readFileSync(path.join(here, "preview-runtime.js"), "utf8");
+
+// Local textures: assets/ui/<key>.png, found by walking up from the current directory.
+function findAssets() {
+  let dir = process.cwd();
+  for (;;) {
+    const candidate = path.join(dir, "assets", "ui");
+    if (fs.existsSync(candidate)) return candidate;
+    const parent = path.dirname(dir);
+    if (parent === dir) return null;
+    dir = parent;
+  }
+}
+const assetDir = findAssets();
+const assets = {};
+if (assetDir) {
+  for (const f of fs.readdirSync(assetDir)) {
+    if (/\.(png|jpe?g)$/i.test(f)) {
+      // Inlined as data URIs: Chromium refuses CSS masks from file:// URLs (they count as cross-origin).
+      const mime = /\.png$/i.test(f) ? "image/png" : "image/jpeg";
+      assets[f.replace(/\.[^.]+$/, "")] = `data:${mime};base64,${fs.readFileSync(path.join(assetDir, f)).toString("base64")}`;
+    }
+  }
+}
 
 function fontsUsed(model) {
   const out = new Set();
@@ -89,6 +115,7 @@ function html(model, name) {
   .rbx{position:absolute;box-sizing:border-box;}
   .txt{position:absolute;display:flex;overflow:visible;pointer-events:none;}
   .txt span{display:block;}
+  .img-tex{position:absolute;inset:0;}
   .img-ph,.img-missing{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     font:600 10px system-ui;color:rgba(0,0,0,.55);overflow:hidden;}
   .img-ph{background:repeating-linear-gradient(45deg,var(--tint) 0 6px,transparent 6px 12px);opacity:.55;}
@@ -98,7 +125,8 @@ function html(model, name) {
     display:flex;align-items:flex-start;justify-content:center;padding-top:4px;z-index:0;pointer-events:none;}
 </style></head>
 <body><div id="stage"></div>
-<script>const MODEL=${json(model)};const OPTS=${json({ ...opts, fontMap: FONT_MAP })};</script>
+<script>const MODEL=${json(model)};const OPTS=${json({ ...opts, fontMap: FONT_MAP, assets })};
+if (location.hash.includes("static")) OPTS.animate = false;</script>
 <script>${runtime}</script>
 </body></html>`;
 }
@@ -137,13 +165,54 @@ if (opts.png) {
       for (const size of opts.sizes) {
         const [w, h] = SIZES[size] ?? size.split("x").map(Number);
         const page = await browser.newPage({ viewport: { width: w, height: h } });
-        await page.goto("file://" + path.resolve(out));
+        await page.goto("file://" + path.resolve(out) + "#static");
         await page.waitForFunction(() => window.__rendered === true, null, { timeout: 15000 });
         await page.waitForTimeout(150);
         const png = path.join(opts.out, `${name}-${size}.png`);
         await page.screenshot({ path: png });
         console.log(`png   ${png}`);
         await page.close();
+      }
+    }
+    if (opts.video) {
+      for (const { name, out } of pages) {
+        const [w, h] = SIZES.tablet;
+        const dir = path.join(opts.out, "video-tmp");
+        const ctx = await browser.newContext({ viewport: { width: w, height: h }, recordVideo: { dir, size: { width: w, height: h } } });
+        const page = await ctx.newPage();
+        await page.goto("file://" + path.resolve(out));
+        await page.waitForFunction(() => window.__rendered === true, null, { timeout: 15000 });
+        // Demo: hover and press the first animated button, close the window, reopen it.
+        const at = async (sel) => (await page.$(sel))?.boundingBox();
+        await page.waitForTimeout(1800);
+        const fxBox = await at("[data-fx]");
+        if (fxBox) {
+          await page.mouse.move(fxBox.x + fxBox.width / 2, fxBox.y + fxBox.height / 2, { steps: 8 });
+          await page.waitForTimeout(500);
+          await page.mouse.down();
+          await page.waitForTimeout(180);
+          await page.mouse.up();
+          await page.waitForTimeout(600);
+        }
+        const closeBox = await at("[data-closes]");
+        if (closeBox) {
+          await page.mouse.move(closeBox.x + closeBox.width / 2, closeBox.y + closeBox.height / 2, { steps: 8 });
+          await page.waitForTimeout(300);
+          await page.mouse.click(closeBox.x + closeBox.width / 2, closeBox.y + closeBox.height / 2);
+          await page.waitForTimeout(900);
+        }
+        const openBox = await at("[data-opens]");
+        if (openBox) {
+          await page.mouse.move(openBox.x + openBox.width / 2, openBox.y + openBox.height / 2, { steps: 8 });
+          await page.mouse.click(openBox.x + openBox.width / 2, openBox.y + openBox.height / 2);
+        }
+        await page.waitForTimeout(2600);
+        const video = page.video();
+        await ctx.close();
+        const dest = path.join(opts.out, `${name}.webm`);
+        fs.renameSync(await video.path(), dest);
+        fs.rmSync(dir, { recursive: true, force: true });
+        console.log(`video ${dest}`);
       }
     }
     await browser.close();

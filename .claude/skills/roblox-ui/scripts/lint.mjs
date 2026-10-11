@@ -2,6 +2,7 @@
 // Lints Roblox UI .model.json files against the roblox-ui skill rules and ui/theme.json.
 // Usage: node lint.mjs [--theme ui/theme.json] <file.model.json>...
 // Exit code 1 when any error is found.
+import fs from "node:fs";
 import path from "node:path";
 import {
   GUI_OBJECTS, TEXT_OBJECTS, BUTTONS, LAYOUTS, SCRIPTS,
@@ -45,6 +46,13 @@ function nearestToken(c) {
   return best;
 }
 
+const ANIMS = new Set(["Spin", "Float", "Pulse", "Wiggle", "Scroll"]);
+const FX = new Set(["Chunky", "Pop"]);
+const assetsMap = fs.existsSync(path.join("ui", "assets.json")) ? readJson(path.join("ui", "assets.json")) : {};
+const localTextures = fs.existsSync(path.join("assets", "ui"))
+  ? new Set(fs.readdirSync(path.join("assets", "ui")).map((f) => f.replace(/\.[^.]+$/, "")))
+  : new Set();
+
 let errorCount = 0;
 let warnCount = 0;
 
@@ -66,6 +74,9 @@ for (const file of files) {
   const families = new Set();
   const parents = new Map();
   const missingImages = new Set();
+  const notUploaded = new Set();
+  const windows = new Set();
+  const targets = [];
 
   if (root.className !== "ScreenGui") err(rootName, `root must be a ScreenGui (got ${root.className})`);
   const rp = props(root);
@@ -79,6 +90,31 @@ for (const file of files) {
     const pr = props(node);
 
     if (!cls) return err(p, "missing className");
+
+    // Animation / texture attributes (read by src/StarterPlayerScripts/UIAnimator.client.luau)
+    const at = node.attributes ?? {};
+    if (at.Anim !== undefined) {
+      if (cls === "UIGradient") {
+        if (at.Anim !== "Sweep") err(p, `UIGradient Anim must be "Sweep" (got ${JSON.stringify(at.Anim)})`);
+      } else if (!ANIMS.has(at.Anim)) err(p, `unknown Anim ${JSON.stringify(at.Anim)} (use ${[...ANIMS].join(", ")})`);
+      if (at.Anim === "Scroll") {
+        if (pr.ScaleType !== "Tile" || !udim2(pr.TileSize)) err(p, 'Anim "Scroll" needs ScaleType "Tile" and an offset TileSize');
+        if (parent?.className !== "CanvasGroup") warn(p, 'Anim "Scroll" should sit inside a CanvasGroup (with the UICorner) so it clips to rounded corners');
+      }
+      if (at.Anim === "Float" && parent && (parent.children ?? []).some((c) => LAYOUTS.has(c.className))) {
+        warn(p, 'Anim "Float" moves Position, which a layout overrides; wrap it in a plain Frame');
+      }
+    }
+    if (at.Fx !== undefined) {
+      if (!BUTTONS.has(cls)) err(p, "Fx only works on TextButton/ImageButton");
+      else if (!FX.has(at.Fx)) err(p, `unknown Fx ${JSON.stringify(at.Fx)} (use Chunky or Pop)`);
+    }
+    if (at.Window === true) windows.add(node.name ?? rootName);
+    for (const k of ["Opens", "Closes"]) if (at[k] !== undefined) targets.push([p, k, at[k], cls]);
+    if (at.Asset !== undefined) {
+      if (!localTextures.has(at.Asset) && !(at.Asset in assetsMap)) err(p, `Asset "${at.Asset}" has no assets/ui/${at.Asset}.png and no ui/assets.json entry`);
+      else if (!pr.Image) notUploaded.add(at.Asset);
+    }
     if (SCRIPTS.has(cls)) err(p, `${cls} inside UI. UI files are instances only; behaviour lives elsewhere`);
     if (parent && !node.name) err(p, "child is missing a name");
 
@@ -133,7 +169,7 @@ for (const file of files) {
         const s = udim2(pr.Size);
         if (s && s.ys === 0 && s.yo > 0 && s.yo < 36) warn(p, `${s.yo}px tall is a small touch target (aim for ≥ 44)`);
       }
-      if ((cls === "ImageLabel" || cls === "ImageButton") && !pr.Image) missingImages.add(node.name);
+      if ((cls === "ImageLabel" || cls === "ImageButton") && !pr.Image && at.Asset === undefined) missingImages.add(node.name);
     }
 
     if (TEXT_OBJECTS.has(cls)) {
@@ -204,6 +240,13 @@ for (const file of files) {
   if (textSizes.size > 4) warn(rootName, `${textSizes.size} different text sizes (${[...textSizes].sort((a, b) => a - b).join(", ")}); aim for ≤ 3-4 per screen`);
   if (families.size > 2) warn(rootName, `${families.size} font families; keep it to 2`);
 
+  for (const [p, k, name, cls] of targets) {
+    if (!BUTTONS.has(cls)) err(p, `${k} only works on buttons`);
+    if (!windows.has(name)) warn(p, `${k} "${name}": no element with that name and attribute Window=true in this file`);
+  }
+  if (notUploaded.size) {
+    issues.push(["info", rootName, `textures not uploaded yet (fill ui/assets.json, then run assets.mjs): ${[...notUploaded].join(", ")}`]);
+  }
   if (missingImages.size) {
     issues.push(["info", rootName, `images without an asset id (tell the user to upload these): ${[...missingImages].join(", ")}`]);
   }

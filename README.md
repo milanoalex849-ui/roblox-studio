@@ -1,43 +1,57 @@
 # roblox-studio
 
-Roblox UI built as **real instances** (ScreenGui → Frame → UICorner/UIStroke/UIListLayout…),
-stored as Rojo `.model.json` files. There are no scripts that build UI with `Instance.new`.
+Animated Roblox UI built as **real instances** (ScreenGui → Frame → UICorner/UIStroke/UIListLayout…),
+stored as Rojo `.model.json` files. Nothing builds UI with `Instance.new`. One shared script,
+`UIAnimator`, adds the motion: spinning rays, scrolling textures, chunky button presses and window pop-ins.
 
 ![Store UI preview](docs/store-preview.png)
 
-## Getting a UI into Studio
+Animation preview: [`docs/store-animation.webm`](docs/store-animation.webm) (hover, press, close, reopen).
 
-**No tools needed:** in Studio, right-click **StarterGui → Insert from File…** and pick a file from
-[`build/`](build/) (for example `build/StoreUI.rbxmx`).
+## Try it in Studio
+
+**Easiest:** open [`build/Place.rbxlx`](build/) in Studio and press Play. Click the purple
+**Store** button on the left.
+
+**Into your own place:** right-click **StarterGui → Insert from File…** and pick `build/StoreUI.rbxmx`,
+then right-click **StarterPlayer → StarterPlayerScripts → Insert from File…** and pick
+`build/UIAnimator.rbxmx`.
 
 **With Rojo (live sync):** install [Rojo](https://rojo.space) and its Studio plugin, run
-`rojo serve` in this folder, then click **Connect** in the plugin. Everything in
-`src/StarterGui/` syncs into StarterGui.
+`rojo serve` here, and click **Connect** in the plugin.
 
-Images are left empty (`Image = ""`) until you upload your icons. Paste each
-`rbxassetid://…` into the matching `Icon…` / `Thumb` ImageLabel.
+## Uploading the textures (one time)
+
+Roblox only shows uploaded images, so the textures stay invisible in Studio until you do this:
+
+1. In Studio: **View → Asset Manager → Bulk Import**, and select every PNG in [`assets/ui/`](assets/ui/).
+2. Right-click each uploaded image → **Copy Asset ID**, then paste it into [`ui/assets.json`](ui/assets.json):
+   `"sunburst": "rbxassetid://1234567890"`.
+3. Run `node .claude/skills/roblox-ui/scripts/assets.mjs` and `node .claude/skills/roblox-ui/scripts/build.mjs`
+   (or just ask Claude: "here are my asset ids: …").
+
+Icons (store icon, coin, item pictures) are empty `Icon…`/`Thumb` ImageLabels: upload your
+own and paste the ids into their `Image`.
 
 ## Making new UI with Claude
 
 The repo ships a Claude Code skill in [`.claude/skills/roblox-ui/`](.claude/skills/roblox-ui/SKILL.md).
-Ask Claude for any screen ("make a daily rewards window", "add a side button bar with Shop, Pets,
-Codes") and it will:
+Ask for any screen ("make a daily rewards window", "a spin wheel UI", "side buttons for Shop, Pets,
+Codes") and Claude will build it in the house style with textures and animation, lint it, screenshot
+it at phone, tablet and desktop sizes, record an animation preview, and build the `.rbxmx`/place files.
 
-1. use the house style (bright simulator look with chunky outlines; theme in [`ui/theme.json`](ui/theme.json)),
-2. write `src/StarterGui/<Name>.model.json`,
-3. lint it against the anti-sloppy rules and theme,
-4. render screenshots at phone, tablet and desktop sizes and fix what looks off,
-5. build `build/<Name>.rbxmx` with Rojo.
-
-Other style presets (clean dark, sci-fi HUD, cozy pastel, horror) are in
-[`.claude/skills/roblox-ui/themes/`](.claude/skills/roblox-ui/themes/).
+Animation is declared with attributes on instances (`Anim = "Spin"`, `Fx = "Chunky"`,
+`Window = true`, `Opens = "StoreWindow"`…). See
+[`references/animation.md`](.claude/skills/roblox-ui/references/animation.md) for the full list. You can also
+add these attributes by hand in Studio's Properties panel.
 
 ### Tool commands
 
 ```bash
 S=.claude/skills/roblox-ui/scripts
-node $S/format.mjs  src/StarterGui/StoreUI.model.json   # compact formatting
-node $S/lint.mjs    src/StarterGui/StoreUI.model.json   # rules + theme check
-node $S/preview.mjs src/StarterGui/StoreUI.model.json   # .ui-preview/*.html + PNGs (PNGs need Playwright)
-node $S/build.mjs                                        # build/*.rbxmx (needs rojo)
+node $S/format.mjs  src/StarterGui/StoreUI.model.json            # compact formatting
+node $S/lint.mjs    src/StarterGui/StoreUI.model.json            # rules + theme + animation checks
+node $S/preview.mjs src/StarterGui/StoreUI.model.json --video    # HTML + PNG screenshots + .webm
+node $S/assets.mjs                                               # write uploaded texture ids into the UI
+node $S/build.mjs                                                # build/*.rbxmx + build/Place.rbxlx (needs rojo)
 ```

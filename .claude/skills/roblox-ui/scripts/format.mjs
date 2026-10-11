@@ -26,8 +26,14 @@ function fmt(value, indent) {
   return `{\n${entries.join(",\n")}\n${indent}}`;
 }
 
-for (const file of process.argv.slice(2)) {
-  const data = JSON.parse(fs.readFileSync(file, "utf8"));
-  fs.writeFileSync(file, fmt(data, "") + "\n");
-  console.log(`formatted ${file}`);
+export function formatJson(data) {
+  return fmt(data, "") + "\n";
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  for (const file of process.argv.slice(2)) {
+    const data = JSON.parse(fs.readFileSync(file, "utf8"));
+    fs.writeFileSync(file, formatJson(data));
+    console.log(`formatted ${file}`);
+  }
 }

@@ -64,9 +64,10 @@ Big titles like "Free Spin: 14m 09s" sit directly on the game world, with no pan
 text, 3–4px outline stroke, TextScaled in a wide box at top-center. The wheel itself is an image
 asset; build the buttons around it (Spin = green, Buy = purple with a Robux icon, Close = neutral).
 
-## Optional textures
+## Textures and motion
 
-Many reference UIs have a subtle diagonal stripe or checker pattern inside panels. That needs an
-image: an `ImageLabel` named `Pattern` filling the panel, `ScaleType: "Tile"`, `TileSize` ~{0,64},{0,64},
-`ImageTransparency` 0.85–0.92, tinted white, with ZIndex at the panel's level and the content above it. Ask the user for a
-tileable stripe asset id; leave `Image: ""` until then.
+The reference look relies on texture and motion. A flat, static panel looks unfinished in this style.
+Use the textures in `assets/ui/` and the animation attributes (both documented in `animation.md`):
+a scrolling lattice inside the panel body, hex fades on headers and card bottoms, spinning rays
+behind items, a spinning swirl backdrop behind open windows, glints on Buy buttons, chunky press
+feedback on every button, and a pop-in with staggered cards when the window opens.

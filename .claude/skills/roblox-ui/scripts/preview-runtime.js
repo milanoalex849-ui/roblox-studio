@@ -8,6 +8,7 @@
     "ScrollingFrame", "CanvasGroup", "ViewportFrame", "VideoFrame"]);
   const TEXT = new Set(["TextLabel", "TextButton", "TextBox"]);
   const IMAGE = new Set(["ImageLabel", "ImageButton"]);
+  const BUTTONS = new Set(["TextButton", "ImageButton"]);
   const WEIGHTS = { Thin: 100, ExtraLight: 200, Light: 300, Regular: 400, Medium: 500, SemiBold: 600, Bold: 700, ExtraBold: 800, Heavy: 900 };
   const FONT_MAP = OPTS.fontMap;
 
@@ -93,6 +94,7 @@
     if (auto !== "None") {
       let needW = 0, needH = 0;
       for (const k of b.kids) {
+        if (k.hidden) continue;
         needW = Math.max(needW, k.x + k.b.w + b.pad.r);
         needH = Math.max(needH, k.y + k.b.h + b.pad.b);
       }
@@ -120,7 +122,7 @@
     b.pad = { l: px("PaddingLeft", b.w), r: px("PaddingRight", b.w), t: px("PaddingTop", b.h), b: px("PaddingBottom", b.h) };
     const cw = Math.max(0, b.w - b.pad.l - b.pad.r);
     const ch = Math.max(0, b.h - b.pad.t - b.pad.b);
-    b.kids = kids(n).filter((c) => GUI.has(c.className) && visible(c)).map((c) => ({ b: build(c, cw, ch), x: 0, y: 0 }));
+    b.kids = kids(n).filter((c) => GUI.has(c.className)).map((c) => ({ b: build(c, cw, ch), x: 0, y: 0, hidden: !visible(c) }));
     placeChildren(b);
   }
 
@@ -140,7 +142,7 @@
       const horiz = lp.FillDirection === "Horizontal";
       const gapU = u1(lp.Padding, { s: 0, o: 0 });
       const gap = gapU.s * (horiz ? cw : ch) + gapU.o;
-      const items = sortKids(b.kids);
+      const items = sortKids(b.kids.filter((k) => !k.hidden));
       const total = items.reduce((a, k) => a + (horiz ? k.b.w : k.b.h), 0) + gap * Math.max(0, items.length - 1);
       const ha = lp.HorizontalAlignment || "Left";
       const va = lp.VerticalAlignment || "Top";
@@ -177,7 +179,7 @@
       const gapX = cp.xs * cw + cp.xo, gapY = cp.ys * ch + cp.yo;
       let perRow = Math.max(1, Math.floor((cw + gapX) / (cellW + gapX)));
       if (gp.FillDirectionMaxCells) perRow = Math.min(perRow, gp.FillDirectionMaxCells);
-      const items = sortKids(b.kids);
+      const items = sortKids(b.kids.filter((k) => !k.hidden));
       const rowW = Math.min(items.length, perRow) * (cellW + gapX) - gapX;
       const ha = gp.HorizontalAlignment || "Left";
       const offX = ha === "Center" ? (cw - rowW) / 2 : ha === "Right" ? cw - rowW : 0;
@@ -200,7 +202,7 @@
   }
 
   // ---- rendering ----
-  function gradientCss(g, base, baseT) {
+  function gradientCss(g, base, baseT, offsetOverride) {
     const gp = P(g);
     const rot = gp.Rotation || 0;
     const cks = (gp.Color && gp.Color.ColorSequence && gp.Color.ColorSequence.keypoints) || [{ time: 0, color: [1, 1, 1] }, { time: 1, color: [1, 1, 1] }];
@@ -216,7 +218,7 @@
       }
       return get(ks[t <= ks[0].time ? 0 : ks.length - 1]);
     };
-    const offset = gp.Offset || [0, 0];
+    const offset = offsetOverride || gp.Offset || [0, 0];
     const stops = times.map((t) => {
       const c = sample(cks, t, (k) => k.color);
       const tr = sample(tks, t, (k) => k.value);
@@ -228,7 +230,7 @@
     return `linear-gradient(${90 + rot}deg, ${stops.join(", ")})`;
   }
 
-  function render(b, x, y, parentEl) {
+  function render(b, x, y, parentEl, hidden) {
     const n = b.node;
     const p = P(n);
     const el = document.createElement("div");
@@ -283,9 +285,26 @@
       el.style.outline = `${border}px solid ${rgba(p.BorderColor3 || [0.106, 0.165, 0.208], bgT)}`;
     }
     if (p.ClipsDescendants || n.className === "ScrollingFrame") el.style.overflow = "hidden";
-    if (n.className === "CanvasGroup") el.style.opacity = 1 - (p.GroupTransparency ?? 0);
+    if (n.className === "CanvasGroup") {
+      el.style.opacity = 1 - (p.GroupTransparency ?? 0);
+      el.style.overflow = "hidden";
+    }
 
-    if (IMAGE.has(n.className)) {
+    const asset = n.attributes && n.attributes.Asset && OPTS.assets[n.attributes.Asset];
+    if (IMAGE.has(n.className) && asset) {
+      const img = document.createElement("div");
+      img.className = "img-tex";
+      const tile = u2(p.TileSize, { xs: 1, xo: 0, ys: 1, yo: 0 });
+      const st = p.ScaleType || "Stretch";
+      img.style.backgroundColor = rgba(p.ImageColor3 || [1, 1, 1], p.ImageTransparency ?? 0);
+      img.style.webkitMaskImage = img.style.maskImage = `url("${asset}")`;
+      img.style.webkitMaskSize = img.style.maskSize = st === "Fit" ? "contain" : st === "Crop" ? "cover"
+        : st === "Tile" ? `${tile.xs * b.w + tile.xo}px ${tile.ys * b.h + tile.yo}px` : "100% 100%";
+      img.style.webkitMaskRepeat = img.style.maskRepeat = st === "Tile" ? "repeat" : "no-repeat";
+      img.style.webkitMaskPosition = img.style.maskPosition = st === "Tile" ? "0 0" : "center";
+      if (corner) img.style.borderRadius = "inherit";
+      el.appendChild(img);
+    } else if (IMAGE.has(n.className)) {
       const img = document.createElement("div");
       img.className = p.Image ? "img-ph" : "img-missing";
       const tint = p.ImageColor3 || [1, 1, 1];
@@ -297,7 +316,9 @@
 
     if (TEXT.has(n.className)) renderText(el, n, b, textStroke, grad && bgT >= 1 ? grad : null);
 
-    for (const k of b.kids) render(k.b, k.x, k.y, el);
+    for (const k of b.kids) render(k.b, k.x, k.y, el, k.hidden);
+    if (hidden) el.style.display = "none";
+    bindAnimations(el, n, b);
     parentEl.appendChild(el);
     return el;
   }
@@ -376,25 +397,176 @@
     if (insetTop) add(`left:0;top:0;width:${W}px;height:${insetTop}px;background:transparent;border-style:dotted;`, "");
   }
 
+
+  // ---- animations (mirrors src/StarterPlayerScripts/UIAnimator.client.luau) ----
+  const runners = new Set();
+  let windowsOpened = false;
+  const attr = (n, k, d) => (n.attributes && n.attributes[k] !== undefined ? n.attributes[k] : d);
+  const backOut = (x) => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  const backIn = (x) => { const c1 = 1.70158, c3 = c1 + 1; return c3 * x * x * x - c1 * x * x; };
+  const quadOut = (x) => 1 - (1 - x) * (1 - x);
+  function animScale(el) { return el.__scale ?? 1; }
+  function setScale(el, v) { el.__scale = v; el.style.scale = String(v); }
+  function tweenScale(el, to, secs, ease, done) {
+    const from = animScale(el), start = performance.now();
+    el.__tween = start;
+    const step = (now) => {
+      if (el.__tween !== start) return;
+      const x = Math.min(1, (now - start) / (secs * 1000));
+      setScale(el, from + (to - from) * ease(x));
+      if (x < 1) requestAnimationFrame(step); else if (done) done();
+    };
+    requestAnimationFrame(step);
+  }
+  function tweenTranslate(el, toY, secs) {
+    const from = el.__ty ?? 0, start = performance.now();
+    el.__ttween = start;
+    const step = (now) => {
+      if (el.__ttween !== start) return;
+      const x = Math.min(1, (now - start) / (secs * 1000));
+      el.__ty = from + (toY - from) * backOut(x);
+      el.style.translate = `0 ${el.__ty}px`;
+      if (x < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  function popTarget(el) {
+    const name = el.dataset.poptarget;
+    return (name && el.querySelector(`:scope > [data-name="${name}"]`)) || el;
+  }
+  function fade(el, opening) {
+    el.querySelectorAll("[data-fadein]").forEach((d) => {
+      d.style.transition = `opacity ${opening ? 0.3 : 0.18}s ease-out`;
+      d.style.opacity = "0";
+      if (opening) requestAnimationFrame(() => requestAnimationFrame(() => { d.style.opacity = "1"; }));
+    });
+  }
+  function playOpen(win) {
+    fade(win, true);
+    const el = popTarget(win);
+    const ap = el.__anchor || [0.5, 0.5];
+    el.style.transformOrigin = `${ap[0] * 100}% ${ap[1] * 100}%`;
+    setScale(el, 0.55);
+    tweenScale(el, 1, 0.38, backOut);
+    el.querySelectorAll("[data-stagger]").forEach((d) => {
+      d.style.transformOrigin = "50% 50%";
+      setScale(d, 0);
+      setTimeout(() => tweenScale(d, 1, 0.32, backOut), (0.12 + Number(d.dataset.stagger) * 0.06) * 1000);
+    });
+  }
+  function closeWindow(win) {
+    if (win.__closing || win.style.display === "none") return;
+    win.__closing = true;
+    fade(win, false);
+    tweenScale(popTarget(win), 0, 0.18, backIn, () => { win.style.display = "none"; win.__closing = false; });
+  }
+  function findWindow(name) { return document.querySelector(`[data-window][data-name="${name}"]`); }
+
+  function bindAnimations(el, n, b) {
+    const p = P(n);
+    const anim = attr(n, "Anim");
+    const delay = attr(n, "AnimDelay", 0);
+    el.__anchor = p.AnchorPoint || [0, 0];
+    if (attr(n, "Stagger") !== undefined) el.dataset.stagger = attr(n, "Stagger");
+    if (anim === "Spin") {
+      const speed = attr(n, "AnimSpeed", 20);
+      runners.add((t) => { el.style.rotate = `${((t + delay) * speed) % 360}deg`; });
+    } else if (anim === "Float") {
+      const speed = attr(n, "AnimSpeed", 0.5), amt = attr(n, "AnimAmount", 4);
+      runners.add((t) => { el.style.translate = `0 ${Math.sin((t + delay) * speed * Math.PI * 2) * amt}px`; });
+    } else if (anim === "Pulse") {
+      const speed = attr(n, "AnimSpeed", 1), amt = attr(n, "AnimAmount", 0.04);
+      el.style.transformOrigin = "50% 50%";
+      runners.add((t) => { el.style.scale = String(1 + Math.sin((t + delay) * speed * Math.PI * 2) * amt); });
+    } else if (anim === "Wiggle") {
+      const amt = attr(n, "AnimAmount", 12), pause = attr(n, "AnimPause", 2.5), len = 0.6;
+      runners.add((t) => {
+        const ph = ((t + delay) % (pause + len)) / len;
+        el.style.rotate = ph < 1 ? `${Math.sin(ph * Math.PI * 6) * amt * (1 - ph)}deg` : "0deg";
+      });
+    } else if (anim === "Scroll") {
+      const img = el.querySelector(":scope > .img-tex");
+      const tile = u2(p.TileSize, { xs: 0, xo: 64, ys: 0, yo: 64 }).xo || 64;
+      const speed = attr(n, "AnimSpeed", 24);
+      if (img) runners.add((t) => { const o = ((t + delay) * speed) % tile; img.style.webkitMaskPosition = img.style.maskPosition = `${o}px ${o}px`; });
+    }
+    const grad = mod(n, "UIGradient");
+    if (grad && attr(grad, "Anim") === "Sweep") {
+      const gp = P(grad);
+      const pause = attr(grad, "AnimPause", 2.2), gdelay = attr(grad, "AnimDelay", 0), len = 0.7;
+      const bg = p.BackgroundColor3 || defaultBg(n.className), bgT = p.BackgroundTransparency ?? 0;
+      runners.add((t) => {
+        const tt = t - gdelay;
+        if (tt < 0) { el.style.background = gradientCss(grad, bg, bgT, [-1, 0]); return; }
+        const ph = Math.min(1, (tt % (len + pause)) / len);
+        const e = ph < 0.5 ? 2 * ph * ph : 1 - Math.pow(-2 * ph + 2, 2) / 2;
+        const off = gp.Rotation && Math.abs(gp.Rotation) % 180 === 90 ? [0, -1 + 2 * e] : [-1 + 2 * e, 0];
+        el.style.background = gradientCss(grad, bg, bgT, off);
+      });
+    }
+
+    if (attr(n, "Window") === true) el.dataset.window = "1";
+    if (attr(n, "PopTarget")) el.dataset.poptarget = attr(n, "PopTarget");
+    if (attr(n, "FadeIn") === true) el.dataset.fadein = "1";
+    const fx = attr(n, "Fx");
+    if (fx && BUTTONS.has(n.className)) {
+      el.dataset.fx = fx;
+      const target = fx === "Chunky" ? null : el; // Chunky scales the parent container (resolved on hover)
+      const depth = attr(n, "Depth", 4);
+      const tgt = () => target || el.parentElement;
+      el.style.cursor = "pointer";
+      el.addEventListener("mouseenter", () => { tgt().style.transformOrigin = "50% 50%"; tweenScale(tgt(), 1.06, 0.18, backOut); });
+      el.addEventListener("mouseleave", () => { tweenScale(tgt(), 1, 0.18, quadOut); if (fx === "Chunky") tweenTranslate(el, 0, 0.1); });
+      el.addEventListener("mousedown", () => { tweenScale(tgt(), 0.95, 0.08, quadOut); if (fx === "Chunky") tweenTranslate(el, depth, 0.06); });
+      el.addEventListener("mouseup", () => { tweenScale(tgt(), 1.06, 0.22, backOut); if (fx === "Chunky") tweenTranslate(el, 0, 0.14); });
+    }
+    const opens = attr(n, "Opens"), closes = attr(n, "Closes");
+    if (opens) el.dataset.opens = opens;
+    if (closes) el.dataset.closes = closes;
+    if (opens || closes) {
+      el.style.cursor = "pointer";
+      el.addEventListener("click", () => {
+        if (closes) { const w = findWindow(closes); if (w) closeWindow(w); }
+        if (opens) {
+          const w = findWindow(opens);
+          if (w && w.style.display === "none") { w.style.display = ""; playOpen(w); } else if (w) closeWindow(w);
+        }
+      });
+    }
+  }
+
+  function tick(now) {
+    const t = now / 1000;
+    for (const run of runners) run(t);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
   function renderAll() {
     const stage = document.getElementById("stage");
     stage.innerHTML = "";
+    runners.clear();
     const W = window.innerWidth, H = window.innerHeight;
     const gui = MODEL;
     const gp = P(gui);
     const inset = gp.IgnoreGuiInset ? 0 : 58;
     const rootBox = { node: { className: "Root", properties: {}, children: [] }, w: W, h: H - inset, pad: { l: 0, r: 0, t: 0, b: 0 }, kids: [] };
     if (gp.Enabled !== false || OPTS.showAll) {
-      rootBox.kids = kids(gui).filter((c) => GUI.has(c.className) && visible(c)).map((c) => ({ b: build(c, W, H - inset), x: 0, y: 0 }));
+      rootBox.kids = kids(gui).filter((c) => GUI.has(c.className)).map((c) => ({ b: build(c, W, H - inset), x: 0, y: 0, hidden: !visible(c) }));
       rootBox.node = { className: "Root", children: gui.children || [], properties: {} };
       placeChildren(rootBox);
     }
     const layer = document.createElement("div");
     layer.className = "rbx";
     layer.style.cssText = `left:0;top:${inset}px;width:${W}px;height:${H - inset}px;z-index:1;`;
-    for (const k of rootBox.kids) render(k.b, k.x, k.y, layer);
+    for (const k of rootBox.kids) render(k.b, k.x, k.y, layer, k.hidden);
     stage.appendChild(layer);
     drawChrome(stage, W, H, inset);
+    if (!windowsOpened && OPTS.animate) {
+      document.querySelectorAll("[data-window]").forEach((w) => { if (w.style.display !== "none") playOpen(w); });
+    }
+    windowsOpened = true;
     window.__rendered = true;
   }
 

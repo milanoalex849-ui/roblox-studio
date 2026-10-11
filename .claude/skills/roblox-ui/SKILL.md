@@ -1,6 +1,6 @@
 ---
 name: roblox-ui
-description: Design and build polished, non-generic Roblox UI as real instances (ScreenGui/Frame/UICorner/UIStroke/UIListLayout…) authored as Rojo .model.json files, never as Luau that calls Instance.new. Use whenever the user asks for any Roblox interface: HUD, main menu, shop, inventory, settings, dialog, notification, leaderboard, loading screen, button, health/XP bar, or "make my UI look better". Includes a theme system, a linter that blocks sloppy defaults, and a headless previewer that screenshots the UI at phone/tablet/desktop sizes so you can look at what you built before handing it over.
+description: Design and build polished, animated Roblox UI as real instances (ScreenGui/Frame/UICorner/UIStroke/UIListLayout…) authored as Rojo .model.json files, never as Luau that calls Instance.new. Motion (spinning rays, scrolling textures, chunky button presses, window pop-ins) is declared with attributes and played by one shared UIAnimator LocalScript. Use whenever the user asks for any Roblox interface or its animation: HUD, main menu, shop, inventory, settings, dialog, notification, leaderboard, loading screen, button, health/XP bar, or "make my UI look better". Includes a theme system, textures, a linter that blocks sloppy defaults, and a headless previewer that screenshots/records the UI at phone/tablet/desktop sizes.
 ---
 
 # Roblox UI (instances, not scripts)
@@ -10,9 +10,11 @@ Properties panels: a tree of real instances with deliberate properties. The outp
 **data**, not code.
 
 - **Never** write Luau that builds UI (`Instance.new("Frame")`, UI libraries, Roact/Fusion trees).
-- **Never** put `Script`/`LocalScript`/`ModuleScript` inside the UI files. Behaviour
-  (button clicks, tweens, opening a shop) is a separate job, only done when the
-  user asks for it, and it lives outside these files.
+- **Never** put `Script`/`LocalScript`/`ModuleScript` inside the UI files.
+- **Motion is declared, not coded.** One shared LocalScript (`src/StarterPlayerScripts/UIAnimator.client.luau`)
+  animates any instance that carries attributes like `Anim: "Spin"`, `Fx: "Chunky"`, `Window: true`,
+  `Opens: "StoreWindow"`. Every UI you make must be animated this way (see `references/animation.md`).
+  Game logic (actually buying an item, saving data) is a separate job, only done when the user asks.
 - Every UI is one `src/StarterGui/<UIName>.model.json` file whose root is a `ScreenGui`.
 
 Read these before writing the first file:
@@ -20,6 +22,8 @@ Read these before writing the first file:
 - `references/style-chunky-cartoon.md`: **the house style for this repo** (bright simulator look:
   thick outlines, depth-slab buttons, colored headers, red X). Use it unless the user asks for
   something else. `src/StarterGui/StoreUI.model.json` is the finished example to imitate.
+- `references/animation.md`: the animation attributes, the textures in `assets/ui/` and
+  how they get uploaded. Static UI counts as unfinished.
 - `references/model-json.md`: the exact JSON encoding for every property type you will use
   (UDim2, Color3, FontFace, ColorSequence, enums…). Wrong encodings fail the build or,
   worse, silently become defaults.
@@ -72,7 +76,12 @@ Hard rules (the linter checks most of these):
 - Icons are `ImageLabel`s named `Icon<Something>`. If you don't have a real asset id, leave
   `Image` as `""` and list the needed icons in your final message. Don't use emoji or
   letters like "X" as icons.
-- Secondary screens (shop, settings, modals) start `Visible: false` on their root frame.
+- Secondary screens (shop, settings, modals) start `Visible: false` on their root frame, carry
+  `Window: true`, and are opened by a button with `Opens`. Every window has a close button with `Closes`.
+- Every button gets an `Fx` (`Chunky` for depth-slab buttons, `Pop` for the rest).
+- Panels get texture and motion: a pattern (scrolling `lattice-tile` or `hex-fade`), rays behind
+  highlighted items, glints on primary buttons, `Stagger` on cards. Textured images use the
+  `Asset` attribute with `Image: ""`.
 
 For big screens it's fine to write a small throwaway generator (Python/Node in your scratchpad)
 that emits the JSON with helpers for repeated pieces (cards, chunky buttons). The **output** file is what
@@ -96,11 +105,14 @@ it's intentional.
 node .claude/skills/roblox-ui/scripts/preview.mjs src/StarterGui/<UIName>.model.json
 # show screens that start hidden:  --show ShopWindow --show SettingsWindow
 # or everything:                   --show-all
+# record the animations (hover, press, close, open) to .ui-preview/<UIName>.webm:  --video
 ```
 
 This writes `.ui-preview/<UIName>.html` and, when Playwright is available, PNG screenshots
 at phone (844×390), tablet (1180×820) and desktop (1920×1080). **Open the PNGs with the Read
-tool and critique them** against the checklist below. Iterate until all three sizes look
+tool and critique them** against the checklist below. To check motion, record `--video` and
+pull a few frames out with `/opt/pw-browsers/ffmpeg-*/ffmpeg-linux -i x.webm -r 2 frame%02d.png`
+(if available), or open the HTML in a browser: it plays the same animations, and the buttons respond to hover and click. Iterate until all three sizes look
 intentional. The previewer is an approximation (image assets render as hatched
 placeholders and fonts are close web substitutes), but layout, spacing, hierarchy, and
 color are faithful.
@@ -120,8 +132,10 @@ Tell the user, briefly:
 - how to get it into Studio: **Rojo** (`rojo serve`, connect with the plugin; it syncs
   into StarterGui) **or** no tools: right-click `StarterGui` → *Insert from File…* →
   pick `build/<UIName>.rbxmx`,
-- the icon/image asset ids they need to fill in,
-- that behaviour (clicks, tweens) is not wired, and offer to do it if they want.
+- the icon/image asset ids they need to fill in, and which `assets/ui` textures still need uploading
+  (`ui/assets.json` → `assets.mjs`),
+- the `.webm` preview if you recorded one (send it with SendUserFile),
+- that game logic (what Buy actually does) is not wired, and offer to do it.
 
 ## Self-critique checklist (run against the screenshots)
 
@@ -135,3 +149,4 @@ Tell the user, briefly:
       and the thumbstick (bottom-left)?
 - [ ] Would a player understand every number on screen without a label? If not, add an icon or label.
 - [ ] Does it look like *this game* (theme, accent, shape language), or like a template?
+- [ ] Does it move? One ambient motion, small accents, feedback on every button, a pop when windows open.
